@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/../webCollector/webCollector.iml" filepath="$PROJECT_DIR$/../webCollector/webCollector.iml" />
       <module fileurl="file://$PROJECT_DIR$/zouzai.iml" filepath="$PROJECT_DIR$/zouzai.iml" />
     </modules>
   </component>

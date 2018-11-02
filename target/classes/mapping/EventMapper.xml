@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zoucai.zucai.mapper.EventMapper" >
+  <resultMap id="BaseResultMap" type="com.zoucai.zucai.model.Event" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="eventDate" property="eventDate" jdbcType="TIMESTAMP" />
+    <result column="eventNumber" property="eventNumber" jdbcType="VARCHAR" />
+    <result column="league" property="league" jdbcType="VARCHAR" />
+    <result column="homeTeam" property="homeTeam" jdbcType="VARCHAR" />
+    <result column="visitingTeam" property="visitingTeam" jdbcType="VARCHAR" />
+    <result column="homFalfScore" property="homFalfScore" jdbcType="INTEGER" />
+    <result column="visitingFalfScore" property="visitingFalfScore" jdbcType="INTEGER" />
+    <result column="homeScore" property="homeScore" jdbcType="INTEGER" />
+    <result column="visitingScore" property="visitingScore" jdbcType="INTEGER" />
+    <result column="winningOdds" property="winningOdds" jdbcType="BIGINT" />
+    <result column="negativeOdds" property="negativeOdds" jdbcType="BIGINT" />
+    <result column="flatOdds" property="flatOdds" jdbcType="BIGINT" />
+    <result column="gameOver" property="gameOver" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, eventDate, eventNumber, league, homeTeam, visitingTeam, homFalfScore, visitingFalfScore, 
+    homeScore, visitingScore, winningOdds, negativeOdds, flatOdds, gameOver
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from zoucai_event
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from zoucai_event
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.zoucai.zucai.model.Event" >
+    insert into zoucai_event (id, eventDate, eventNumber,
+      league, homeTeam, visitingTeam, 
+      homFalfScore, visitingFalfScore, homeScore, 
+      visitingScore, winningOdds, negativeOdds, 
+      flatOdds, gameOver)
+    values (#{id,jdbcType=BIGINT}, #{eventDate,jdbcType=VARCHAR}, #{eventNumber,jdbcType=VARCHAR},
+      #{league,jdbcType=VARCHAR}, #{homeTeam,jdbcType=VARCHAR}, #{visitingTeam,jdbcType=VARCHAR}, 
+      #{homFalfScore,jdbcType=INTEGER}, #{visitingFalfScore,jdbcType=INTEGER}, #{homeScore,jdbcType=INTEGER}, 
+      #{visitingScore,jdbcType=INTEGER}, #{winningOdds,jdbcType=BIGINT}, #{negativeOdds,jdbcType=BIGINT},
+      #{flatOdds,jdbcType=BIGINT}, #{gameOver,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.zoucai.zucai.model.Event" >
+    insert into zoucai_event
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="eventDate != null" >
+        eventDate,
+      </if>
+      <if test="eventNumber != null" >
+        eventNumber,
+      </if>
+      <if test="league != null" >
+        league,
+      </if>
+      <if test="homeTeam != null" >
+        homeTeam,
+      </if>
+      <if test="visitingTeam != null" >
+        visitingTeam,
+      </if>
+      <if test="homFalfScore != null" >
+        homFalfScore,
+      </if>
+      <if test="visitingFalfScore != null" >
+        visitingFalfScore,
+      </if>
+      <if test="homeScore != null" >
+        homeScore,
+      </if>
+      <if test="visitingScore != null" >
+        visitingScore,
+      </if>
+      <if test="winningOdds != null" >
+        winningOdds,
+      </if>
+      <if test="negativeOdds != null" >
+        negativeOdds,
+      </if>
+      <if test="flatOdds != null" >
+        flatOdds,
+      </if>
+      <if test="gameOver != null" >
+        gameOver,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="eventDate != null" >
+        #{eventDate,jdbcType=VARCHAR},
+      </if>
+      <if test="eventNumber != null" >
+        #{eventNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="league != null" >
+        #{league,jdbcType=VARCHAR},
+      </if>
+      <if test="homeTeam != null" >
+        #{homeTeam,jdbcType=VARCHAR},
+      </if>
+      <if test="visitingTeam != null" >
+        #{visitingTeam,jdbcType=VARCHAR},
+      </if>
+      <if test="homFalfScore != null" >
+        #{homFalfScore,jdbcType=INTEGER},
+      </if>
+      <if test="visitingFalfScore != null" >
+        #{visitingFalfScore,jdbcType=INTEGER},
+      </if>
+      <if test="homeScore != null" >
+        #{homeScore,jdbcType=INTEGER},
+      </if>
+      <if test="visitingScore != null" >
+        #{visitingScore,jdbcType=INTEGER},
+      </if>
+      <if test="winningOdds != null" >
+        #{winningOdds,jdbcType=BIGINT},
+      </if>
+      <if test="negativeOdds != null" >
+        #{negativeOdds,jdbcType=BIGINT},
+      </if>
+      <if test="flatOdds != null" >
+        #{flatOdds,jdbcType=BIGINT},
+      </if>
+      <if test="gameOver != null" >
+        #{gameOver,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.zoucai.zucai.model.Event" >
+    update zoucai_event
+    <set >
+      <if test="eventDate != null" >
+        eventDate = #{eventDate,jdbcType=VARCHAR},
+      </if>
+      <if test="eventNumber != null" >
+        eventNumber = #{eventNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="league != null" >
+        league = #{league,jdbcType=VARCHAR},
+      </if>
+      <if test="homeTeam != null" >
+        homeTeam = #{homeTeam,jdbcType=VARCHAR},
+      </if>
+      <if test="visitingTeam != null" >
+        visitingTeam = #{visitingTeam,jdbcType=VARCHAR},
+      </if>
+      <if test="homFalfScore != null" >
+        homFalfScore = #{homFalfScore,jdbcType=INTEGER},
+      </if>
+      <if test="visitingFalfScore != null" >
+        visitingFalfScore = #{visitingFalfScore,jdbcType=INTEGER},
+      </if>
+      <if test="homeScore != null" >
+        homeScore = #{homeScore,jdbcType=INTEGER},
+      </if>
+      <if test="visitingScore != null" >
+        visitingScore = #{visitingScore,jdbcType=INTEGER},
+      </if>
+      <if test="winningOdds != null" >
+        winningOdds = #{winningOdds,jdbcType=BIGINT},
+      </if>
+      <if test="negativeOdds != null" >
+        negativeOdds = #{negativeOdds,jdbcType=BIGINT},
+      </if>
+      <if test="flatOdds != null" >
+        flatOdds = #{flatOdds,jdbcType=BIGINT},
+      </if>
+      <if test="gameOver != null" >
+        gameOver = #{gameOver,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.zoucai.zucai.model.Event" >
+    update zoucai_event
+    set eventDate = #{eventDate,jdbcType=VARCHAR},
+      eventNumber = #{eventNumber,jdbcType=VARCHAR},
+      league = #{league,jdbcType=VARCHAR},
+      homeTeam = #{homeTeam,jdbcType=VARCHAR},
+      visitingTeam = #{visitingTeam,jdbcType=VARCHAR},
+      homFalfScore = #{homFalfScore,jdbcType=INTEGER},
+      visitingFalfScore = #{visitingFalfScore,jdbcType=INTEGER},
+      homeScore = #{homeScore,jdbcType=INTEGER},
+      visitingScore = #{visitingScore,jdbcType=INTEGER},
+      winningOdds = #{winningOdds,jdbcType=BIGINT},
+      negativeOdds = #{negativeOdds,jdbcType=BIGINT},
+      flatOdds = #{flatOdds,jdbcType=BIGINT},
+      gameOver = #{gameOver,jdbcType=INTEGER}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

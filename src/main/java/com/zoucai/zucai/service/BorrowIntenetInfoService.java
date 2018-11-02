@@ -16,7 +16,7 @@ public class BorrowIntenetInfoService {
     @Resource
     private BorrowIntenetInfoRepository borrowIntenetInfoRepository;
 
-    public List<BorrowIntent> get(long id) {
-        return borrowIntenetInfoRepository.findAll();
+    public BorrowIntent get(long id) {
+        return borrowIntenetInfoRepository.getByLBorrowIntentId(id);
     }
 }
