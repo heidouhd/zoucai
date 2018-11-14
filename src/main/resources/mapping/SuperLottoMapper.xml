@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zoucai.zucai.mapper.SuperLottoMapper" >
+  <resultMap id="BaseResultMap" type="com.zoucai.zucai.model.SuperLotto" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="eventDate" property="eventDate" jdbcType="VARCHAR" />
+    <result column="eventNum" property="eventNum" jdbcType="VARCHAR" />
+    <result column="redBall1" property="redBall1" jdbcType="VARCHAR" />
+    <result column="redBall2" property="redBall2" jdbcType="VARCHAR" />
+    <result column="redBall3" property="redBall3" jdbcType="VARCHAR" />
+    <result column="redBall4" property="redBall4" jdbcType="VARCHAR" />
+    <result column="redBall5" property="redBall5" jdbcType="VARCHAR" />
+    <result column="blueBall1" property="blueBall1" jdbcType="VARCHAR" />
+    <result column="blueBall2" property="blueBall2" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, eventDate, eventNum, redBall1, redBall2, redBall3, redBall4, redBall5, blueBall1, 
+    blueBall2
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from super_lotto
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from super_lotto
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.zoucai.zucai.model.SuperLotto" >
+    insert into super_lotto (eventDate, eventNum,
+      redBall1, redBall2, redBall3, 
+      redBall4, redBall5, blueBall1, 
+      blueBall2)
+    values (#{eventDate,jdbcType=VARCHAR}, #{eventNum,jdbcType=VARCHAR},
+      #{redBall1,jdbcType=VARCHAR}, #{redBall2,jdbcType=VARCHAR}, #{redBall3,jdbcType=VARCHAR}, 
+      #{redBall4,jdbcType=VARCHAR}, #{redBall5,jdbcType=VARCHAR}, #{blueBall1,jdbcType=VARCHAR}, 
+      #{blueBall2,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.zoucai.zucai.model.SuperLotto" >
+    insert into super_lotto
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="eventDate != null" >
+        eventDate,
+      </if>
+      <if test="eventNum != null" >
+        eventNum,
+      </if>
+      <if test="redBall1 != null" >
+        redBall1,
+      </if>
+      <if test="redBall2 != null" >
+        redBall2,
+      </if>
+      <if test="redBall3 != null" >
+        redBall3,
+      </if>
+      <if test="redBall4 != null" >
+        redBall4,
+      </if>
+      <if test="redBall5 != null" >
+        redBall5,
+      </if>
+      <if test="blueBall1 != null" >
+        blueBall1,
+      </if>
+      <if test="blueBall2 != null" >
+        blueBall2,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="eventDate != null" >
+        #{eventDate,jdbcType=VARCHAR},
+      </if>
+      <if test="eventNum != null" >
+        #{eventNum,jdbcType=VARCHAR},
+      </if>
+      <if test="redBall1 != null" >
+        #{redBall1,jdbcType=VARCHAR},
+      </if>
+      <if test="redBall2 != null" >
+        #{redBall2,jdbcType=VARCHAR},
+      </if>
+      <if test="redBall3 != null" >
+        #{redBall3,jdbcType=VARCHAR},
+      </if>
+      <if test="redBall4 != null" >
+        #{redBall4,jdbcType=VARCHAR},
+      </if>
+      <if test="redBall5 != null" >
+        #{redBall5,jdbcType=VARCHAR},
+      </if>
+      <if test="blueBall1 != null" >
+        #{blueBall1,jdbcType=VARCHAR},
+      </if>
+      <if test="blueBall2 != null" >
+        #{blueBall2,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.zoucai.zucai.model.SuperLotto" >
+    update super_lotto
+    <set >
+      <if test="eventDate != null" >
+        eventDate = #{eventDate,jdbcType=VARCHAR},
+      </if>
+      <if test="eventNum != null" >
+        eventNum = #{eventNum,jdbcType=VARCHAR},
+      </if>
+      <if test="redBall1 != null" >
+        redBall1 = #{redBall1,jdbcType=VARCHAR},
+      </if>
+      <if test="redBall2 != null" >
+        redBall2 = #{redBall2,jdbcType=VARCHAR},
+      </if>
+      <if test="redBall3 != null" >
+        redBall3 = #{redBall3,jdbcType=VARCHAR},
+      </if>
+      <if test="redBall4 != null" >
+        redBall4 = #{redBall4,jdbcType=VARCHAR},
+      </if>
+      <if test="redBall5 != null" >
+        redBall5 = #{redBall5,jdbcType=VARCHAR},
+      </if>
+      <if test="blueBall1 != null" >
+        blueBall1 = #{blueBall1,jdbcType=VARCHAR},
+      </if>
+      <if test="blueBall2 != null" >
+        blueBall2 = #{blueBall2,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.zoucai.zucai.model.SuperLotto" >
+    update super_lotto
+    set eventDate = #{eventDate,jdbcType=VARCHAR},
+      eventNum = #{eventNum,jdbcType=VARCHAR},
+      redBall1 = #{redBall1,jdbcType=VARCHAR},
+      redBall2 = #{redBall2,jdbcType=VARCHAR},
+      redBall3 = #{redBall3,jdbcType=VARCHAR},
+      redBall4 = #{redBall4,jdbcType=VARCHAR},
+      redBall5 = #{redBall5,jdbcType=VARCHAR},
+      blueBall1 = #{blueBall1,jdbcType=VARCHAR},
+      blueBall2 = #{blueBall2,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>
