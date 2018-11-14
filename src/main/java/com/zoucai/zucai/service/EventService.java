@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 @Service(value = "eventService")
 public class EventService {
     @Autowired
-    private EventMapper eventMapper;//这里会报错，但是并不会影响
+    private EventMapper  eventMapper;//这里会报错，但是并不会影响
 
     public void insertData(Event event){
         eventMapper.insert(event);
