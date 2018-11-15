@@ -6,6 +6,8 @@ import com.zoucai.zucai.model.Event;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service(value = "eventService")
 public class EventService {
     @Autowired
@@ -13,5 +15,9 @@ public class EventService {
 
     public void insertData(Event event){
         eventMapper.insert(event);
+    }
+
+    public List<EventService> queryZuCaiData() {
+        return eventMapper.queryZuCaiData();
     }
 }

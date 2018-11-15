@@ -150,4 +150,11 @@
       blueBall1 = #{blueBall1,jdbcType=VARCHAR}
     where id = #{id,jdbcType=BIGINT}
   </update>
+
+  <select id="queryDualColoreBallData" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select
+    <include refid="Base_Column_List" />
+    from dual_colore_ball
+    ORDER BY eventNum
+  </select>
 </mapper>

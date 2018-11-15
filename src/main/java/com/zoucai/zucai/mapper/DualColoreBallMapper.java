@@ -2,6 +2,8 @@ package com.zoucai.zucai.mapper;
 
 import com.zoucai.zucai.model.DualColoreBall;
 
+import java.util.List;
+
 public interface DualColoreBallMapper {
     int deleteByPrimaryKey(Long id);
 
@@ -14,4 +16,6 @@ public interface DualColoreBallMapper {
     int updateByPrimaryKeySelective(DualColoreBall record);
 
     int updateByPrimaryKey(DualColoreBall record);
+
+    List<DualColoreBall> queryDualColoreBallData();
 }

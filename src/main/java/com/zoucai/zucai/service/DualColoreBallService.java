@@ -7,6 +7,8 @@ import com.zoucai.zucai.model.Event;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service(value = "dualColoreBallService")
 public class DualColoreBallService {
     @Autowired
@@ -14,5 +16,9 @@ public class DualColoreBallService {
 
     public void insertData(DualColoreBall dualColoreBall){
         dualColoreBallMapper.insert(dualColoreBall);
+    }
+
+    public List<DualColoreBall> queryDualColoreBallData() {
+        return dualColoreBallMapper.queryDualColoreBallData();
     }
 }

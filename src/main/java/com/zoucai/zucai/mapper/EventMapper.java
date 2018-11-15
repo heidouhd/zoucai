@@ -1,6 +1,9 @@
 package com.zoucai.zucai.mapper;
 
 import com.zoucai.zucai.model.Event;
+import com.zoucai.zucai.service.EventService;
+
+import java.util.List;
 
 public interface EventMapper {
     int deleteByPrimaryKey(Long id);
@@ -14,4 +17,6 @@ public interface EventMapper {
     int updateByPrimaryKeySelective(Event record);
 
     int updateByPrimaryKey(Event record);
+
+    List<EventService> queryZuCaiData();
 }
