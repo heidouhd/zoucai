@@ -3,10 +3,7 @@ package com.zoucai.zucai.util;
 import cn.edu.hfut.dmic.webcollector.model.CrawlDatums;
 import cn.edu.hfut.dmic.webcollector.model.Page;
 import cn.edu.hfut.dmic.webcollector.plugin.berkeley.BreadthCrawler;
-import com.zoucai.zucai.model.ElevenSelectedFive;
-import com.zoucai.zucai.model.Event;
 import com.zoucai.zucai.model.SuperLotto;
-import com.zoucai.zucai.service.EventService;
 import com.zoucai.zucai.service.SuperLottoService;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
@@ -30,14 +27,12 @@ public class SuperLottoCrawler extends BreadthCrawler {
         super(crawlPath, autoParse);
         superLottoService = es;
         /*start page*/
-        for(int i=1;i<10000;i++){
-            this.addSeed("http://info.sporttery.cn/football/match_result.php?page="+i+"&search_league=0&start_date=2001-01-01&end_date=2009-04-27");
-        }
+        this.addSeed("http://www.lottery.gov.cn/historykj/history.jspx?page=1&_ltype=dlt&termNum=10000&startTerm=&endTerm=");
 
 
         /*fetch url like http://news.hfut.edu.cn/show-xxxxxxhtml*/
 //        this.addRegex("http://news.hfut.edu.cn/show-.*html");
-            this.addRegex("http://info.sporttery.cn/football/match_result.php?page=.*&search_league=0&start_date=2001-01-01&end_date=2009-04-27.*");
+        this.addRegex("http://www.lottery.gov.cn/historykj/history.jspx*");
 //        this.addRegex("http://info.sporttery.cn/football/match_result.php?page=.*&search_league=0&start_date=2001-01-01&end_date=2018-10-31");
         /*do not fetch jpg|png|gif*/
         this.addRegex("-.*\\.(jpg|png|gif).*");
@@ -50,20 +45,20 @@ public class SuperLottoCrawler extends BreadthCrawler {
         String url = page.url();
         System.out.println(url);
         /*if page is news page*/
-        if (page.matchUrl("http://info.sporttery.cn/football/match_result.php.*")) {
+        if (url.contains("http://www.lottery.gov.cn/historykj/history.jspx")) {
             /*we use jsoup to parse page*/
-            if(!url.contains("search_league=0&start_date=")){
-                return;
-            }
+//            if(!url.contains("search_league=0&start_date=")){
+//                return;
+//            }
             Document doc = page.doc();
 
             /*extract title and content of news by css selector*/
-            Elements elements = doc.select("table.m-tab");
+            Elements elements = doc.select("table tbody");
             Elements trs = elements.select("tr");
             for(Element tr : trs){
                 Elements tds = tr.select("td");
                 SuperLotto event = new SuperLotto();
-                if(tds.size() == 12){
+                if(tds.size() == 20){
                     event.setEventNum(tds.get(0).text());
                     event.setRedBall1(tds.get(1).text());
                     event.setRedBall2(tds.get(2).text());
@@ -72,7 +67,7 @@ public class SuperLottoCrawler extends BreadthCrawler {
                     event.setRedBall5(tds.get(5).text());
                     event.setBlueBall1(tds.get(6).text());
                     event.setBlueBall2(tds.get(7).text());
-                    event.setEventDate(tds.get(15).text());
+                    event.setEventDate(tds.get(19).text());
                     superLottoService.insertData(event);
                 }
                 for(Element td : tds){
