@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="DEPOSLendBusiness:war">
+    <output-path>$PROJECT_DIR$/../../1112/DEPOSLendBusiness/target</output-path>
+    <root id="archive" name="DEPOSLendBusiness.war">
+      <element id="artifact" artifact-name="DEPOSLendBusiness:war exploded" />
+    </root>
+  </artifact>
+</component>

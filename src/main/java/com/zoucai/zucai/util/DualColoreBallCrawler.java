@@ -29,7 +29,7 @@ public class DualColoreBallCrawler extends BreadthCrawler {
         super(crawlPath, autoParse);
         dualColoreBallService = dc;
         /*start page*/
-        this.addSeed("https://datachart.500.com/ssq/history/newinc/history.php?start=08000&end=18133");
+        this.addSeed("https://datachart.500.com/ssq/history/newinc/history.php?start=08000&end=18199");
 
         /*fetch url like http://news.hfut.edu.cn/show-xxxxxxhtml*/
 //        this.addRegex("http://news.hfut.edu.cn/show-.*html");

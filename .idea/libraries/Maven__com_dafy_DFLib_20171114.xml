@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Maven: com.dafy:DFLib:20171114">
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/com/dafy/dflib/20171114/DFLib-20171114.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$MAVEN_REPOSITORY$/com/dafy/DFLib/20171114/DFLib-20171114-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$MAVEN_REPOSITORY$/com/dafy/DFLib/20171114/DFLib-20171114-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>
